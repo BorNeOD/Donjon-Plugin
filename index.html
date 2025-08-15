@@ -3,216 +3,547 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guide plugin donjon Rinaorc</title>
+<title>Guide plugin donjon Rinaorc - BorNeO_</title>
+<meta name="description" content="Guide complet des donjons du plugin Rinaorc avec drops, taux de loot et armes rares. 12 donjons détaillés avec stratégies et récompenses.">
+<meta name="keywords" content="Rinaorc, donjon, plugin, Minecraft, guide, loot, armes, drops">
+<meta name="author" content="BorNeO_">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://borneo-.github.io/Donjon-Plugin/">
+<meta property="og:title" content="Guide plugin donjon Rinaorc - BorNeO_">
+<meta property="og:description" content="Guide complet des donjons du plugin Rinaorc avec drops, taux de loot et armes rares. 12 donjons détaillés avec stratégies et récompenses.">
+<meta property="og:image" content="https://borneo-.github.io/Donjon-Plugin/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Guide Donjon Rinaorc">
+<meta property="og:locale" content="fr_FR">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://borneo-.github.io/Donjon-Plugin/">
+<meta property="twitter:title" content="Guide plugin donjon Rinaorc - BorNeO_">
+<meta property="twitter:description" content="Guide complet des donjons du plugin Rinaorc avec drops, taux de loot et armes rares. 12 donjons détaillés avec stratégies et récompenses.">
+<meta property="twitter:image" content="https://borneo-.github.io/Donjon-Plugin/preview.png">
+
+<!-- Additional meta tags -->
+<meta name="theme-color" content="#2d6a4f">
+<link rel="canonical" content="https://borneo-.github.io/Donjon-Plugin/">
 <style>
-    body {
-        font-family: 'Arial', sans-serif;
-        background: linear-gradient(135deg, #d4edda, #b7e4c7);
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    :root {
+        --primary-color: #1e3a32;
+        --secondary-color: #2d6a4f;
+        --accent-color: #40916c;
+        --light-green: #52b788;
+        --bg-primary: #f8fffe;
+        --bg-secondary: #e8f5e8;
+        --text-dark: #1b4332;
+        --text-light: #6c757d;
+        --shadow-light: 0 2px 10px rgba(29, 78, 65, 0.1);
+        --shadow-medium: 0 4px 20px rgba(29, 78, 65, 0.15);
+        --shadow-strong: 0 8px 32px rgba(29, 78, 65, 0.2);
+        --border-radius: 12px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
         margin: 0;
         padding: 0;
-        color: #222;
+        box-sizing: border-box;
     }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        min-height: 100vh;
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(64, 145, 108, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(45, 106, 79, 0.1) 0%, transparent 50%);
+        z-index: -1;
+        pointer-events: none;
+    }
+
     header {
         text-align: center;
-        padding: 30px;
-        background-color: #2d6a4f;
-        color: #fff;
-        font-size: 2em;
-        font-weight: bold;
-        text-shadow: 1px 1px #000;
+        padding: 3rem 2rem;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-strong);
     }
+
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+        z-index: 1;
+    }
+
+    header h1 {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        letter-spacing: -0.02em;
+    }
+
+    header .subtitle {
+        font-size: 1.1rem;
+        font-weight: 300;
+        opacity: 0.9;
+        position: relative;
+        z-index: 2;
+    }
+
+    .search-container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        position: relative;
+    }
+
     #searchBar {
-        display: block;
-        margin: 20px auto;
-        padding: 10px;
-        width: 50%;
-        font-size: 1em;
-        border-radius: 5px;
-        border: 1px solid #333;
+        width: 100%;
+        padding: 1rem 1.5rem 1rem 3rem;
+        font-size: 1rem;
+        border: 2px solid transparent;
+        border-radius: var(--border-radius);
+        background: white;
+        box-shadow: var(--shadow-light);
+        transition: var(--transition);
+        font-family: inherit;
+        outline: none;
     }
+
+    #searchBar:focus {
+        border-color: var(--accent-color);
+        box-shadow: var(--shadow-medium), 0 0 0 3px rgba(64, 145, 108, 0.1);
+        transform: translateY(-1px);
+    }
+
+    .search-container::before {
+        content: '🔍';
+        position: absolute;
+        left: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        opacity: 0.5;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
     .group {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        margin: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
     }
+
     .donjon {
-        border-radius: 10px;
-        padding: 15px;
-        width: 22%;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        margin-bottom: 20px;
-        transition: transform 0.2s;
-        background-color: rgba(255,255,255,0.95);
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-light);
+        transition: var(--transition);
+        border: 1px solid rgba(64, 145, 108, 0.1);
+        position: relative;
+        overflow: hidden;
     }
+
+    .donjon::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-color), var(--light-green));
+    }
+
     .donjon:hover {
-        transform: scale(1.05);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-strong);
+        border-color: var(--accent-color);
     }
+
     .donjon h2 {
         text-align: center;
-        margin-top: 0;
-        color: #2d6a4f;
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
     }
+
+    .table-wrapper {
+        overflow-x: auto;
+        border-radius: 8px;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;
-        margin-top: 10px;
+        font-size: 0.9rem;
+        background: white;
     }
+
     th, td {
-        border: 1px solid #aaa;
-        padding: 5px;
+        padding: 0.75rem 0.5rem;
         text-align: center;
+        border: none;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
     }
+
     th {
-        background-color: #95d5b2;
+        background: linear-gradient(135deg, var(--accent-color), var(--light-green));
+        color: white;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
+
+    tr:nth-child(even) {
+        background-color: rgba(248, 255, 254, 0.5);
+    }
+
+    tr:hover {
+        background-color: rgba(64, 145, 108, 0.05);
+    }
+
     .rarety {
-        font-weight: bold;
+        font-weight: 600;
+        padding: 0.2rem 0.5rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
-    .Rare { color: orange; }
-    .Mythique { color: green; }
-    .Divin { color: gold; }
-    .Ancestral { color: red; }
-    .Omnipotent { color: deepskyblue; }
-    .Inexorable { color: black; }
-    .Primordial { color: deeppink; }
-    .Cosmique { color: purple; }
+
+    .Rare { 
+        color: #ff8500; 
+        background: rgba(255, 133, 0, 0.1);
+    }
+    .Mythique { 
+        color: #28a745; 
+        background: rgba(40, 167, 69, 0.1);
+    }
+    .Divin { 
+        color: #ffc107; 
+        background: rgba(255, 193, 7, 0.1);
+    }
+    .Ancestral { 
+        color: #dc3545; 
+        background: rgba(220, 53, 69, 0.1);
+    }
+    .Omnipotent { 
+        color: #17a2b8; 
+        background: rgba(23, 162, 184, 0.1);
+    }
+    .Inexorable { 
+        color: #343a40; 
+        background: rgba(52, 58, 64, 0.1);
+    }
+    .Primordial { 
+        color: #e83e8c; 
+        background: rgba(232, 62, 140, 0.1);
+    }
+    .Cosmique { 
+        color: #6f42c1; 
+        background: rgba(111, 66, 193, 0.1);
+    }
+    .Legendaire { 
+        color: #ff6b35; 
+        background: rgba(255, 107, 53, 0.1);
+    }
+
     footer {
         text-align: center;
-        padding: 20px;
-        background-color: #2d6a4f;
-        color: #fff;
-        font-size: 0.9em;
+        padding: 3rem 2rem;
+        background: var(--primary-color);
+        color: white;
+        margin-top: 4rem;
+        position: relative;
+    }
+
+    footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, transparent 0%, rgba(45, 106, 79, 0.1) 100%);
+    }
+
+    .footer-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .footer-content p {
+        font-size: 0.95rem;
+        opacity: 0.9;
+        line-height: 1.8;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .group {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        header {
+            padding: 2rem 1rem;
+        }
+        
+        .donjon {
+            padding: 1.25rem;
+        }
+        
+        th, td {
+            padding: 0.5rem 0.25rem;
+            font-size: 0.85rem;
+        }
+        
+        .search-container {
+            margin: 1.5rem auto;
+        }
+    }
+
+    /* Loading Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .donjon {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .donjon:nth-child(1) { animation-delay: 0.1s; }
+    .donjon:nth-child(2) { animation-delay: 0.2s; }
+    .donjon:nth-child(3) { animation-delay: 0.3s; }
+    .donjon:nth-child(4) { animation-delay: 0.4s; }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--secondary-color);
     }
 </style>
 </head>
 <body>
 
-<header>Guide plugin donjon Rinaorc, Made by BorNeO_</header>
+<header>
+    <h1>Guide plugin donjon Rinaorc</h1>
+    <div class="subtitle">Made by BorNeO_</div>
+</header>
 
-<input type="text" id="searchBar" onkeyup="searchDonjon()" placeholder="Rechercher un donjon...">
+<div class="container">
+    <div class="search-container">
+        <input type="text" id="searchBar" onkeyup="searchDonjon()" placeholder="Rechercher un donjon...">
+    </div>
 
-<div class="group" id="donjonContainer">
+    <div class="group" id="donjonContainer">
 
 <!-- Donjon 1 -->
 <div class="donjon">
     <h2>1 - Temple de la jungle</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T1</td><td>4-8 Venin éternelle</td><td>-</td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T1</td><td>4-8 Venin éternelle</td><td>-</td></tr>
+        </table>
+    </div>
 </div>
 
 <!-- Donjon 2 -->
 <div class="donjon">
     <h2>2 - Caverne des Pirates</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T1</td><td>2-4 Phylactère des mers</td><td>Lame Entanelle 5% <span class="rarety Rare">Rare</span></td></tr>
-        <tr><td>T1</td><td>4-8 Phylactère des mers</td><td>-</td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T1</td><td>2-4 Phylactère des mers</td><td>Lame Entanelle 5% <span class="rarety Rare">Rare</span></td></tr>
+            <tr><td>T1</td><td>4-8 Phylactère des mers</td><td>-</td></tr>
+        </table>
+    </div>
 </div>
 
 <!-- Donjon 3 -->
 <div class="donjon">
     <h2>3 - Forteresse éternelle</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T2</td><td>2-6 Fragment druidique</td><td>-</td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T2</td><td>2-6 Fragment druidique</td><td>Sceptre Silvestre 2.5% <span class="rarety Legendaire">Legendaire</span></td></tr>
+        </table>
+    </div>
 </div>
 
 <!-- Donjon 4 -->
 <div class="donjon">
     <h2>4 - Profondeur Sous-marine</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T2</td><td>4-8 Mineraix abyssale</td><td>Lance permafrost 5% <span class="rarety Mythique">Mythique</span></td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T2</td><td>4-8 Mineraix abyssale</td><td>Lance permafrost 5% <span class="rarety Mythique">Mythique</span></td></tr>
+        </table>
+    </div>
 </div>
 
 <!-- Donjon 5 -->
 <div class="donjon">
     <h2>5 - Mirage Ancien</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T2</td><td>2-4 Os Ancien</td><td>-</td></tr>
-        <tr><td>T2</td><td>4-6 Os Ancien</td><td>Artéfact d'éternité <span class="rarety Divin">Divin</span></td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T2</td><td>2-4 Os Ancien</td><td>-</td></tr>
+            <tr><td>T2</td><td>4-6 Os Ancien</td><td>Artéfact d'éternité <span class="rarety Divin">Divin</span></td></tr>
+        </table>
+    </div>
 </div>
 
 <!-- Donjon 6 -->
 <div class="donjon">
     <h2>6 - Bibliothèque perdue</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T3</td><td>2-4 Vase oublié</td><td>-</td></tr>
-        <tr><td>T3</td><td>4-6 Vase oublié</td><td>Pique télurique 2.5% <span class="rarety Divin">Divin</span></td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T3</td><td>2-4 Vase oublié</td><td>-</td></tr>
+            <tr><td>T3</td><td>4-6 Vase oublié</td><td>Pique télurique 2.5% <span class="rarety Divin">Divin</span></td></tr>
+        </table>
+    </div>
 </div>
 
 <!-- Donjon 7 -->
 <div class="donjon">
     <h2>7 - Manoir Hanté</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T3</td><td>2-6 Éctoplasme spectrale</td><td>Glaive du Wendigo 1% <span class="rarety Ancestral">Ancestral</span></td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T3</td><td>2-6 Éctoplasme spectrale</td><td>Glaive du Wendigo 1% <span class="rarety Ancestral">Ancestral</span></td></tr>
+        </table>
+    </div>
 </div>
 
 <!-- Donjon 8 -->
 <div class="donjon">
     <h2>8 - Chambres de lave</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T4</td><td>2-4 Corne de démon</td><td>-</td></tr>
-        <tr><td>T4</td><td>2-4 Corne de démon</td><td>Katana 1% <span class="rarety Ancestral">Ancestral</span></td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T4</td><td>2-4 Corne de démon</td><td>-</td></tr>
+            <tr><td>T4</td><td>2-4 Corne de démon</td><td>Katana 1% <span class="rarety Ancestral">Ancestral</span></td></tr>
+        </table>
+    </div>
 </div>
 
 <!-- Donjon 9 -->
 <div class="donjon">
     <h2>9 - Fjord Hurlant</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T4</td><td>2-4 Éclat arctique</td><td>-</td></tr>
-        <tr><td>T4</td><td>2-4 Éclat arctique</td><td>Lance de givre 1-0.5% <span class="rarety Omnipotent">Omnipotent</span></td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T4</td><td>2-4 Éclat arctique</td><td>-</td></tr>
+            <tr><td>T4</td><td>2-4 Éclat arctique</td><td>Lance de givre 1-0.5% <span class="rarety Omnipotent">Omnipotent</span></td></tr>
+        </table>
+    </div>
 </div>
 
 <!-- Donjon 10 -->
 <div class="donjon">
     <h2>10 - Cité Golémique</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T4</td><td>2-4 Golacier</td><td>-</td></tr>
-        <tr><td>T4</td><td>2-4 Golacier</td><td>Arc golémique 1-0.5% <span class="rarety Inexorable">Inexorable</span></td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T4</td><td>2-4 Golacier</td><td>-</td></tr>
+            <tr><td>T4</td><td>2-4 Golacier</td><td>Arc golémique 1-0.5% <span class="rarety Inexorable">Inexorable</span></td></tr>
+        </table>
+    </div>
 </div>
 
 <!-- Donjon 11 -->
 <div class="donjon">
     <h2>11 - Forgefer</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T5</td><td>2-6 Férovalis</td><td>Épée Nain 0.5% <span class="rarety Primordial">Primordial</span></td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T5</td><td>2-6 Férovalis</td><td>Épée Nain 0.5% <span class="rarety Primordial">Primordial</span></td></tr>
+        </table>
+    </div>
 </div>
 
 <!-- Donjon 12 -->
 <div class="donjon">
     <h2>12 - Néant Perdu</h2>
-    <table>
-        <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
-        <tr><td>T5</td><td>2-4 Cristal du néant</td><td>-</td></tr>
-        <tr><td>T5</td><td>2-6 Cristal du néant</td><td>? 0.25% <span class="rarety Cosmique">Cosmique</span></td></tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>Potion</th><th>Drop</th><th>Arme (Loot)</th></tr>
+            <tr><td>T5</td><td>2-4 Cristal du néant</td><td>-</td></tr>
+            <tr><td>T5</td><td>2-6 Cristal du néant</td><td>? 0.25% <span class="rarety Cosmique">Cosmique</span></td></tr>
+        </table>
+    </div>
 </div>
 
+    </div>
 </div>
 
 <footer>
-Crédits : Site créé par BorNeO_. Les loots et % sont basés sur des expériences de joueurs, parfois approximatifs..
+    <div class="footer-content">
+        <p>Crédits : Site créé par BorNeO_. Les loots et % sont basés sur des expériences de joueurs, parfois approximatifs..</p>
+    </div>
 </footer>
 
 <script>
